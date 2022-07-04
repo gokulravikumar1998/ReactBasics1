@@ -30,7 +30,7 @@ class App extends Component {
   nameChangeHandler = (event) => {
     this.setState({
       persons:[
-        {name: "GOkul",age: 23},
+        {name: "Gokul",age: 23},
         {name: event.target.value , age: 19},
         {name:"Raj",age: 31}
       ]
@@ -38,11 +38,20 @@ class App extends Component {
 
   }
   render() {
+
+    const style = {
+      backgroundColor : 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+    }
+
     return (
       <div className="App">
         <h1>Hi,I'm React Developer</h1>
         <p>This is working</p>
-        <button onClick={()=> this.switchNameHandler('Tex')}>Switch Button</button>
+        <button style={style} onClick={()=> this.switchNameHandler('Tex')}>Switch Button</button>
         <Person 
         name={this.state.persons[0].name} 
         age={this.state.persons[0].age} />
