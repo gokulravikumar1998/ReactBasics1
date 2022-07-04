@@ -9,9 +9,13 @@ const app = props =>{
           {name:"Balu",age: 19},
           {name:"Raj",age: 31}
         ],
-        otheState:'Other val'
+        
       });
-      
+    
+  const [otheState,setOtherState] = useState('som other value')
+
+  console.log(personsState,otheState)
+
   const  switchNameHandler = () =>{
       // calling this actually replaces the state not as same as class setState(which actually rerender the particular object)
       setPersonsState({
