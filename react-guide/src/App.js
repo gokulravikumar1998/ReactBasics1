@@ -1,59 +1,52 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person'
 
-const app = props =>{
-  const [ personsState,setPersonsState ] = useState({
-        persons:[
-          {name: "Gokul",age: 23},
-          {name:"Balu",age: 19},
-          {name:"Raj",age: 31}
-        ],
-        
-      });
-    
-  const [otheState,setOtherState] = useState('som other value')
+class App extends Component {
 
-  console.log(personsState,otheState)
+  state = {
+    persons:[
+      {name: "Gokul",age: 23},
+      {name:"Balu",age: 19},
+      {name:"Raj",age: 31}
+    ],
+    otheState:'Other val'
+  }
 
-  const  switchNameHandler = () =>{
-      // calling this actually replaces the state not as same as class setState(which actually rerender the particular object)
-      setPersonsState({
-        persons:[
-          {name: "Max",age: 23},
-          {name:"Balu",age: 19},
-          {name:"Raj",age: 31}
-        ],
-        otheState:personsState.otheState
-      })
-    }
-  
-// class App extends Component {
+  switchNameHandler = (newName) =>{
+    //this can only be used in the funciton syntax here ,
+    // not es5 syntax so that we can reach out to the state
 
-//   state = {
-//     persons:[
-//       {name: "Gokul",age: 23},
-//       {name:"Balu",age: 19},
-//       {name:"Raj",age: 31}
-//     ],
-//     otheState:'Other val'
-//   }
-
-
- 
+    //this.state.persons[0].name = 'Max' ***NOT RIGHT WAY**
+    this.setState({
+      persons:[
+        {name: newName,age: 23},
+        {name:"Balu",age: 19},
+        {name:"Raj",age: 31}
+      ]
+    })
+  }
+  render() {
     return (
       <div className="App">
         <h1>Hi,I'm React Developer</h1>
         <p>This is working</p>
-        <button onClick={switchNameHandler}>Switch Button</button>
-        <Person name={personsState.persons[0].name} age={personsState.persons[0].age} />
-        <Person name={personsState.persons[1].name} age={personsState.persons[1].age}>Here from Balu</Person>
-        <Person name={personsState.persons[2].name} age={personsState.persons[2].age}/> 
+        <button onClick={this.switchNameHandler.bind(this,'Tex')}>Switch Button</button>
+        <Person 
+        name={this.state.persons[0].name} 
+        age={this.state.persons[0].age} />
+        <Person
+        name={this.state.persons[1].name} 
+        age={this.state.persons[1].age}
+        click = {this.switchNameHandler.bind(this,'Hex')}>Here from Balu</Person>
+        <Person 
+        name={this.state.persons[2].name}
+        age={this.state.persons[2].age}/> 
       </div>
     );
     //return React.createElement('div',{className:App},React.createElement('h1',null,'Hi, I\'m a React developer'))
-  
+  }
 
 }
 
-export default app;
+export default App;
