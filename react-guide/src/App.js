@@ -3,7 +3,7 @@ import './App.css';
 import styled from 'styled-components';
 import Radium , { StyleRoot } from 'radium';
 import Person from './Person/Person'
-
+import ErrorBoundary from './ErrorBoundry/ErrorBoundary'
 const StyledButton =  styled.button`
   background-color : ${props => props.alt ? 'red':'green'};
   color:white;
@@ -103,8 +103,8 @@ class App extends Component {
       persons = (<div>
         {
           this.state.persons.map((person,index)=>{
-              return  <Person click={()=>this.deletePersonsHandler(index)}
-              name={person.name} age={person.age} key={person.id} changed={(event)=>this.nameChangeHandler(event,person.id)}/>
+              return  <ErrorBoundary  key={person.id} ><Person click={()=>this.deletePersonsHandler(index)}
+              name={person.name} age={person.age} changed={(event)=>this.nameChangeHandler(event,person.id)}/></ErrorBoundary>
           })
         
         }
