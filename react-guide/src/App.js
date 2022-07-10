@@ -1,8 +1,24 @@
 import React, { Component } from 'react';
 import './App.css';
+import styled from 'styled-components';
 import Radium , { StyleRoot } from 'radium';
 import Person from './Person/Person'
 
+const StyledButton =  styled.button`
+  background-color : ${props => props.alt ? 'red':'green'};
+  color:white;
+  font: inherit;
+  border: 1px solid blue;
+  padding: 8px;
+  cursor: pointer;
+  margin: 10px;
+
+  &:hover {
+    background-color: ${props => props.alt ? 'salmon':'lightgreen'};
+    color: black;
+  }
+
+`
 class App extends Component {
 
   state = {
@@ -105,11 +121,6 @@ class App extends Component {
         name={this.state.persons[2].name}
         age={this.state.persons[2].age}/>  */}
         </div>) 
-      style.backgroundColor = 'Red' 
-      style[':hover'] = {
-        backgroundColor:'lightred',
-        color:'black'
-      }
     }
     //let classes = ['red','bold'].join(' '); //withput dot from app.css
     let classes = []
@@ -124,7 +135,7 @@ class App extends Component {
       <div className="App">
         <h1>Hi,I'm React Developer</h1>
         <p className={classes.join(' ')}>This is working</p>
-        <button style={style} onClick={ this.togglePersonsHandler}>Switch Button</button>
+        <StyledButton alt={this.state.showPersons} onClick={ this.togglePersonsHandler}>Switch Button</StyledButton>
         {persons}
       </div>
       </StyleRoot>
