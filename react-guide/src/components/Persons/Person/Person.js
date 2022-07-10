@@ -17,11 +17,6 @@ const StyleDiv = styled.div`
 
 `;
 const person = (props) =>{
-    const k = Math.random();
-    if (k < 0.7) {
-
-        throw ("something went wrong")
-    }
     
     return (
     
