@@ -69,11 +69,12 @@ class App extends Component {
   render() {
 
     const style = {
-      backgroundColor : 'white',
+      backgroundColor : 'green',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      margin: '10px'
     }
     let persons = null;
     if (this.state.showPersons) {
@@ -83,7 +84,9 @@ class App extends Component {
               return  <Person click={()=>this.deletePersonsHandler(index)}
               name={person.name} age={person.age} key={person.id} changed={(event)=>this.nameChangeHandler(event,person.id)}/>
           })
+        
         }
+
         {/* <Person 
         name={this.state.persons[0].name} 
         age={this.state.persons[0].age} />
@@ -96,6 +99,7 @@ class App extends Component {
         name={this.state.persons[2].name}
         age={this.state.persons[2].age}/>  */}
         </div>) 
+      style.backgroundColor = 'Red' 
     }
     return (
       <div className="App">
