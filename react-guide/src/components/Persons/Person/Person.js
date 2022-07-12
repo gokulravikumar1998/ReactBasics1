@@ -1,4 +1,4 @@
-import React from "react"
+import React , {Component} from "react"
 import './Person.css'
 import Radium from "radium"
 import styled from "styled-components"
@@ -16,16 +16,19 @@ const StyleDiv = styled.div`
     } 
 
 `;
-const person = (props) =>{
+
+class Person extends Component {
+render(){
    console.log('[Person.js] rendering ....') 
     return (
     
     <StyleDiv>
-        <p onClick={props.click}>I'm a {props.name} and I'm {props.age} year old</p>
-        <p>{props.children}</p>
-        <input type="text" onChange={props.changed} value={props.name}/>
+        <p onClick={this.props.click}>I'm a {this.props.name} and I'm {this.props.age} year old</p>
+        <p>{this.props.children}</p>
+        <input type="text" onChange={this.props.changed} value={this.props.name}/>
     </StyleDiv>
     )
 }
+}
 
-export default Radium(person);
+export default Radium(Person);
