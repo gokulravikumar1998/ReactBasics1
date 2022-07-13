@@ -20,7 +20,7 @@ const cockpit = (props) =>{
         setTimeout(()=>{
             alert('Saved to cloud')
         },1000)
-    },[]/*[] executes only once *//*[props.persons] conditional execution when person changes only them useeffect runs */)
+    },[]/*[],[a,b,c(multiple fields depend on)] executes only once *//*[props.persons] conditional execution when person changes only them useeffect runs */)
 
     const assignedClasses = []
     let btnClass = '';
