@@ -21,6 +21,7 @@ class Persons extends Component {
     }
 
     componentDidUpdate(prevProps,prevState,snapshot){
+        //most oftern used hook after fetch data from server
         console.log("[Persons.js] componentDidUpdate")
         console.log(snapshot)
     }
