@@ -20,6 +20,13 @@ const cockpit = (props) =>{
         setTimeout(()=>{
             alert('Saved to cloud')
         },1000)
+        /*
+        return statement are optional
+        */ 
+       return ()=>{
+        console.log("[Cockpit.js] cleanup work in useEffect")
+        //run after every render cycle
+       }
     },[]/*[],[a,b,c(multiple fields depend on)] executes only once *//*[props.persons] conditional execution when person changes only them useeffect runs */)
 
     const assignedClasses = []
