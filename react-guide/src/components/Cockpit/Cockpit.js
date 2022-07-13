@@ -25,20 +25,32 @@ const cockpit = (props) =>{
         */ 
        return ()=>{
         console.log("[Cockpit.js] cleanup work in useEffect")
-        //run after every render cycle
+        //run after every render cycle 
        }
-    },[]/*[],[a,b,c(multiple fields depend on)] executes only once *//*[props.persons] conditional execution when person changes only them useeffect runs */)
+    },[]// only when it is rendered and unmounted 
+    /*[],[a,b,c(multiple fields depend on)] executes only once *//*[props.persons] conditional execution when person changes only them useeffect runs */)
 
+    useEffect(()=>{
+        console.log("[Cockpit.js] 2 useEffect")
+
+        return ()=>{
+            //this run first now this can be useful in case you have some operation
+            //which actually should be cancelled whenever the component rerenders
+            //after it updated so to say
+            console.log("[Cockpit.js] 2 cleanup work in useEffect")
+            //run after every render cycle
+           }
+    })
     const assignedClasses = []
     let btnClass = '';
     if (props.show) {
         
         btnClass = classes.Red
     }
-    if (props.persons.length<=2){
+    if (props.personsLen<=2){
         assignedClasses.push(classes.red)
     }
-    if (props.persons.length<=1){
+    if (props.personsLen<=1){
       assignedClasses.push(classes.bold)
     }
     return (
@@ -54,4 +66,4 @@ const cockpit = (props) =>{
 
 }
 
-export default cockpit
+export default React.memo(cockpit)
