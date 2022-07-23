@@ -10,7 +10,7 @@ class Persons extends Component {
     }
     shouldComponentUpdate(nextProps,nextState) {
         //shallow comparison thses two values are same 
-        if(nextProps.persons!== this.props.persons){
+        if(nextProps.persons!== this.props.persons || nextProps.clicked!=this.props.click || nextProps.changed!=this.props.changed){
             console.log('[Persons.js] shouldComponentUpdate')
             return true
         }
