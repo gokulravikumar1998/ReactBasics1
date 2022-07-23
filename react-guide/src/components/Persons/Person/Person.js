@@ -2,7 +2,15 @@ import React , {Component,Fragment} from "react"
 import './Person.css'
 import Radium from "radium"
 import styled from "styled-components"
-
+//prop-types video in 7/26  setting types for all props 
+/*
+impoer Proptypes from 
+Person.proptypes = {
+    click:Proptypes.func,
+    name:Proptypes.string,
+    age:Proptypes.number
+}
+ */
 const StyleDiv = styled.div`
     width: 60%;
     margin: 16px auto;
