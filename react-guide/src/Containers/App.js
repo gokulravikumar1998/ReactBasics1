@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-
+import withClass from "../hoc/WithClass"
 import Radium , { StyleRoot } from 'radium';
 import Person from '../components/Persons/Persons'
-
+import Aux from "../hoc/Aux"
 import Cockpit from '../components/Cockpit/Cockpit'
 
 class App extends Component {
@@ -26,7 +26,8 @@ class App extends Component {
     ],
     otheState:'Other val',
     showPersons: false,
-    showCockpit: true
+    showCockpit: true,
+    changeCounter:0
   }
 
   static getDerivedStateFromProps(props,state) {
@@ -67,9 +68,13 @@ class App extends Component {
   }
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons
-    this.setState({
-      showPersons:!doesShow
-    })
+    this.setState((prevState,props)=>{
+      return  {
+        showPersons:!doesShow,
+        changeCounter:prevState.changeCounter+1
+      }
+    }
+     )
 
   }
 
@@ -122,7 +127,7 @@ class App extends Component {
   
     return (
       
-      <div className="App">
+      <Aux>
         <button onClick={()=>{
           this.setState({
             showCockpit:!this.state.showCockpit
@@ -130,7 +135,7 @@ class App extends Component {
         }} >Remove Cockpit</button>
         {this.state.showCockpit?<Cockpit title={this.props.appTitle} show={this.state.showPersons} personsLen={this.state.persons.length} clicked={this.togglePersonsHandler}/>:null}
         {persons}
-      </div>
+      </Aux>
       
     );
     //return React.createElement('div',{className:App},React.createElement('h1',null,'Hi, I\'m a React developer'))
@@ -138,4 +143,6 @@ class App extends Component {
 
 }
 
-export default Radium(App);
+export default withClass(App,"App");
+
+//oram , nolimits
